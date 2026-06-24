@@ -11,6 +11,19 @@ const {
     EmbedBuilder
 } = require('discord.js');
 
+// 🌐 SERVIDOR WEB (Render + UptimeRobot)
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Bot activo');
+});
+
+app.listen(3000, () => {
+    console.log('🌐 Servidor web activo en puerto 3000');
+});
+
+// 🤖 DISCORD BOT
 const client = new Client({
     intents: [GatewayIntentBits.Guilds]
 });
@@ -92,4 +105,4 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN);
